@@ -5,7 +5,7 @@ int Add(int *a, int *b) {
 	return res;
 }
 void AddVal(int* a, int* b, int* result) {	
-	*result = *a + *b;	
+	*result = *a + *b;		
 }
 void Swap(int* a, int* b) {
 	int temp = *a;
