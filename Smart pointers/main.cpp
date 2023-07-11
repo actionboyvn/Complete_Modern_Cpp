@@ -42,8 +42,23 @@ void TestSharedPointers() {
 
 	std::cout << sp_project.use_count() << std::endl;
 }
+void TestWeakPointers() {
+	std::shared_ptr<Integer> sp_ptr = std::make_shared<Integer>(10);
+	std::weak_ptr<Integer> wp_ptr{ sp_ptr };
+	std::cout << "Shared pointer expired: " << wp_ptr.expired() << std::endl;
+	std::cout << "Ref count: " << sp_ptr.use_count() << std::endl;
+
+	auto sp = wp_ptr.lock();	
+	std::cout << (*sp).iGetVal() << std::endl;
+	std::cout << "Ref count: " << sp_ptr.use_count() << std::endl;
+	sp.reset();
+
+	sp_ptr.reset();
+	std::cout << "Shared pointer expired: " << wp_ptr.expired() << std::endl;
+}
 int main() {
 	//TestUniquePointers();
-	TestSharedPointers();
+	//TestSharedPointers();
+	TestWeakPointers();
 	return 0;
 }
