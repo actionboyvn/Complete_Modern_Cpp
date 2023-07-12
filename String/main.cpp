@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <sstream>
 enum class Case { SENSITIVE, INSENSITIVE };
 
 size_t Find(
@@ -24,11 +24,26 @@ size_t Find(
 
 	return std::string::npos;
 }
+void TestStringStream() {
+	std::stringstream ss;
+	int x{ 5 }, y{ 2 };
+	int sum = x + y;	
+	ss << "Sum of " << x << " and " << y << " is " << sum << std::endl;
+	std::cout << ss.str();
+	ss.str(""); // Reset string stream
+	std::string data{"5.2 3.1 4.5"};
+	ss.str(data);
+	float f;
+	while (ss >> f)
+		std::cout << f << ' ';	
+}
 
 int main() {
+	/*
 	std::string s = "123Abc";
 	std::string x = "abc";
 	size_t pos = Find(s, x, Case::INSENSITIVE, 0);
-	std::cout << pos;
+	std::cout << pos;*/
+	TestStringStream();
 	return 0;
 }

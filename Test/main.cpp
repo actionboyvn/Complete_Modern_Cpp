@@ -2,38 +2,25 @@
 #include <vector>
 
 
-
-#define Square(x) x*x
-using namespace std;
-class Number {
-    int m_Num{};
+class Base {
 public:
-    Number(int num) {
-        m_Num = num;
-    }
-    int GetNumber() const{
-        return m_Num;
-    }
-    //Constructors and other members
+    int i_public{};
+private:
+    int i_private{};
+protected:
+    int i_protected{};
 };
 
-void Print(const Number& num) {
-    std::cout << num.GetNumber();
-}
-
-inline int iSquare(int x) {
-    return x * x;
-}
-
+class Child : private Base {
+public:
+    void vPrint() {
+        std::cout << i_public;
+    }
+};
 
 int main() {
-    /*
-    //Number n{ 5 };
-    //Print(n);
-    int x = 3;
-    //int y = iSquare(x + 1);
-    int y = Square((x + 1));
-    std::cout << y;*/
+    Child c;
+    c.i_public;
 
     return 0;
 }
