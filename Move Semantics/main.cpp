@@ -11,11 +11,23 @@ std::istream& operator>> (std::istream& in, Integer& pc_obj) {
 	pc_obj.vSetVal(x);
 	return in;
 }
+void Swap(Integer& x, Integer& y) {
+	Integer temp{std::move(x)};
+	x = std::move(y);
+	y = std::move(temp);
+	/*Integer temp{ x };
+	x = y;
+	y = temp;*/
+}
 int main() {	
 	Integer x(5);
 	Integer y(7);
-	Integer z;
+	/*Integer z;
 	z = x + y;
-	cout << z;
+	cout << z;*/
+
+	Swap(x, y);
+	cout << x;
+	cout << y;
 	return 0;
 }
