@@ -1,15 +1,5 @@
 #include "User.h"
 
-void User::vAddContact(const Contact& pc_contact)
-{
-	v_contacts.push_back(pc_contact);
-}
-
-void User::vAddContact(Contact&& pc_contact) noexcept
-{
-	v_contacts.push_back(pc_contact);
-}
-
 void User::vDisplayContacts(int iOption)
 {
 	if (iOption == 0) {

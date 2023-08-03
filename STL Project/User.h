@@ -13,8 +13,17 @@ public:
 	};
 	~User() {
 	};
-	void vAddContact(const Contact& pc_other);
-	void vAddContact(Contact&& pc_contact) noexcept;
+
+	template<typename T>
+	void vAddContact(T&& contact) {
+		v_contacts.push_back(std::forward<T>(contact));		
+	};
+
+	template<typename ...Params>
+	void vAddContact(Params&& ...args) {
+		v_contacts.emplace_back(std::forward<Params>(args)...);		
+	}
+
 	void vDisplayContacts(int iOption);
 	void vDisplayFirstNamesAndPrimaryNumbers() const;
 	void vDisplayContactsFromTheCompany() const;

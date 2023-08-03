@@ -20,8 +20,10 @@ public:
 		Group eGroup):s_first_name(sFirstName),s_last_name(sLastName),
 		s_primary_phone_number(sPrimaryPhoneNumber),s_secondary_phone_number(sSecondaryPhoneNumber),
 		i_email_id(iEmailId),s_address(sAddress),s_company(sCompany),e_group(eGroup){
+		//std::cout << "Contact()" << std::endl;
 	};
 	~Contact() {
+		//std::cout << "~Contact()" << std::endl;
 	};		
 
 	void vDisplay() const;
